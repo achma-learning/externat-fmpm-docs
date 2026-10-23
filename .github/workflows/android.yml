@@ -1,0 +1,131 @@
+name: Android
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Les noms de fichiers du dépôt contiennent des accents : la JVM doit tourner en UTF-8.
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write # création de la release sur un tag v*
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Vérifier les données (index.json, objectifs.json)
+        run: python3 scripts/check_data.py
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: SDK Android (API 37)
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-37.0" "build-tools;37.0.0" > /dev/null
+
+      - name: Version
+        id: version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            name="${GITHUB_REF_NAME#v}"
+          else
+            name="1.0.${GITHUB_RUN_NUMBER}"
+          fi
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "VERSION_NAME=$name" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+
+      - name: Clé de signature
+        id: signing
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ] && [ -n "$KEYSTORE_PASSWORD" ] && [ -n "$KEY_ALIAS" ] && [ -n "$KEY_PASSWORD" ]; then
+            echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+            {
+              echo "KEYSTORE_FILE=$RUNNER_TEMP/release.jks"
+              echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
+              echo "KEY_ALIAS=$KEY_ALIAS"
+              echo "KEY_PASSWORD=$KEY_PASSWORD"
+            } >> "$GITHUB_ENV"
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Secrets de signature absents : APK signé avec une clé de debug temporaire (les mises à jour ne s'installeront pas par-dessus)."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Lint, tests et APK release
+        working-directory: android
+        run: ./gradlew --no-daemon :app:lintDebug :app:testDebugUnitTest :app:assembleRelease
+
+      - name: Renommer l'APK
+        id: apk
+        run: |
+          apk="externat-fmpm-${{ steps.version.outputs.name }}.apk"
+          mkdir -p dist
+          cp android/app/build/outputs/apk/release/app-release.apk "dist/$apk"
+          echo "file=$apk" >> "$GITHUB_OUTPUT"
+          (cd dist && sha256sum "$apk" | tee "$apk.sha256")
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: externat-fmpm-apk
+          path: dist/${{ steps.apk.outputs.file }}
+          if-no-files-found: error
+
+      - name: Release GitHub (tag v*)
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.name }}
+          APK: ${{ steps.apk.outputs.file }}
+          SIGNED: ${{ steps.signing.outputs.signed }}
+        run: |
+          cd dist
+          zip_name="externat-fmpm-${VERSION}.zip"
+          cp ../android/distribution/README-installation.txt .
+          zip -q "$zip_name" "$APK" README-installation.txt
+          sha_apk=$(cut -d' ' -f1 "$APK.sha256")
+          sha_zip=$(sha256sum "$zip_name" | cut -d' ' -f1)
+          if [ "$SIGNED" = "true" ]; then
+            signing="Signé avec la clé définitive : s'installe par-dessus les versions précédentes."
+          else
+            signing="⚠️ Signé avec une clé de debug temporaire : installation neuve uniquement (pas de mise à jour par-dessus)."
+          fi
+          {
+            echo "## Téléchargement"
+            echo "- \`$APK\` : application Android (7.0 et plus), hors ligne, aucune permission. SHA-256 : \`$sha_apk\`"
+            echo "- \`$zip_name\` : l'APK + \`README-installation.txt\` (installation, sources inconnues, mises à jour). SHA-256 : \`$sha_zip\`"
+            echo
+            echo "$signing"
+            echo
+            echo "## Installer ou mettre à jour"
+            echo "Ouvrez l'APK sur le téléphone, autorisez l'installation depuis cette source, puis « Installer »."
+            echo "Une mise à jour s'installe par-dessus l'ancienne version et garde la checklist (même clé de signature)."
+            echo
+            echo "## Revenir en arrière"
+            echo "Android refuse un versionCode plus ancien : désinstaller (efface la checklist), puis installer l'APK d'une release précédente."
+          } > notes.md
+          gh release create "$GITHUB_REF_NAME" "$APK" "$zip_name" \
+            --repo "$GITHUB_REPOSITORY" --title "Externat FMPM $VERSION" --notes-file notes.md
