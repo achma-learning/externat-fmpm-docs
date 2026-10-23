@@ -1,0 +1,10 @@
+# Original du guide old (68 Mo > limite GitHub) : seule la copie compressée est versionnée
+sources/original/
+
+# Fichiers temporaires Office / systèmes
+~$*
+*.tmp
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/

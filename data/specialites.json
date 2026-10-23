@@ -1,0 +1,144 @@
+{
+  "_doc": "Source de vérité pour 'objective par specialite/'. pages = numéros de page du PDF (base 1), pas les numéros imprimés. annee = préfixe du fichier ; annees = années couvertes (pour filtrer dans l'app). XA = année non précisée par le guide.",
+  "sources": {
+    "2022": {
+      "fichier": "sources/guide de stage 2022.pdf",
+      "titre": "Guide de stage hospitalier de l'étudiant - Edition 2022 (FMPM)"
+    },
+    "old": {
+      "fichier": "sources/guide de stage old - compresse.pdf",
+      "original": "sources/original/guide de stage old.pdf",
+      "titre": "Guide de stage de l'étudiant en médecine - ancienne version (FMPM-UCA)"
+    }
+  },
+  "specialites": [
+    {"dossier": "immersion-1ere-annee", "nom": "Stage d'immersion dans les structures de soins", "categorie": "1er cycle", "objectifs": [
+      {"version": "2022", "annee": "1A", "annees": [1], "pages": [3]},
+      {"version": "old", "annee": "1A", "annees": [1], "pages": [36]}]},
+    {"dossier": "medecine-sociale-2eme-annee", "nom": "Stage de médecine sociale", "categorie": "1er cycle", "objectifs": [
+      {"version": "2022", "annee": "2A", "annees": [2], "pages": [4]},
+      {"version": "old", "annee": "2A", "annees": [2], "pages": [37], "note": "Objectifs non encore élaborés dans l'ancien guide (texte seul)."}]},
+    {"dossier": "semiologie-soins-infirmiers", "nom": "Sémiologie - soins infirmiers", "categorie": "Stages fondamentaux", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [39]}]},
+    {"dossier": "stage-fondamental-medecine", "nom": "Stage fondamental de médecine", "categorie": "Stages fondamentaux", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [41]}]},
+    {"dossier": "stage-fondamental-chirurgie", "nom": "Stage fondamental de chirurgie", "categorie": "Stages fondamentaux", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [42]}]},
+
+    {"dossier": "appareil-locomoteur", "nom": "Pathologie de l'appareil locomoteur (traumatologie, rhumatologie, réadaptation)", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [5, 6]}]},
+    {"dossier": "cardiologie", "nom": "Cardiologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [12]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [45, 46]},
+      {"version": "old", "annee": "6A", "annees": [6], "pages": [47, 48]}]},
+    {"dossier": "pneumologie", "nom": "Pneumo-phtisiologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [9]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [58, 59], "note": "p58 contient aussi les objectifs 6A ; p59 (tâches d'apprentissage, ARC) commune."},
+      {"version": "old", "annee": "6A", "annees": [6], "pages": [58, 59], "note": "p58 contient aussi les objectifs 3A ; p59 (tâches d'apprentissage, ARC) commune."}]},
+    {"dossier": "gastro-enterologie", "nom": "Gastro-entérologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [11]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [52]}]},
+    {"dossier": "maladies-infectieuses", "nom": "Maladies infectieuses", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [7]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [55]}]},
+    {"dossier": "medecine-interne", "nom": "Médecine interne", "categorie": "Médecine", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [54]}]},
+    {"dossier": "neurologie", "nom": "Neurologie", "categorie": "Médecine", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [57]}]},
+    {"dossier": "rhumatologie", "nom": "Rhumatologie", "categorie": "Médecine", "objectifs": [
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [44]}]},
+    {"dossier": "medecine-physique-readaptation", "nom": "Médecine physique et réadaptation fonctionnelle", "categorie": "Médecine", "objectifs": [
+      {"version": "old", "annee": "XA", "annees": [], "pages": [61], "note": "Service absent du cursus de l'ancien guide : année non précisée."}]},
+    {"dossier": "dermatologie", "nom": "Dermatologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [13]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [49]}]},
+    {"dossier": "oncologie-hematologie", "nom": "Cancérologie - hématologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [16]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [53, 62], "note": "Ancien guide : hématologie clinique (p53) + radiothérapie-oncologie (p62)."}]},
+    {"dossier": "endocrinologie", "nom": "Endocrinologie et maladies métaboliques", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [18]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [50, 51]}]},
+    {"dossier": "imagerie-medicale", "nom": "Imagerie médicale / Radiologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [19]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [63, 64, 86], "note": "p86 = radiologie pédiatrique (même page que la réanimation pédiatrique)."}]},
+    {"dossier": "nephrologie", "nom": "Néphrologie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [22]},
+      {"version": "old", "annee": "4A-5A", "annees": [4, 5], "pages": [56], "note": "Le cursus de l'ancien guide place la néphrologie en 4A et en 5A."}]},
+    {"dossier": "psychiatrie", "nom": "Psychiatrie", "categorie": "Médecine", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [24]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [60]}]},
+
+    {"dossier": "chirurgie-viscerale", "nom": "Chirurgie viscérale", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [8]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [70]}]},
+    {"dossier": "neurochirurgie", "nom": "Neurochirurgie", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "3A", "annees": [3], "pages": [10]},
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [72, 73]}]},
+    {"dossier": "traumatologie-orthopedie", "nom": "Traumatologie-orthopédie", "categorie": "Chirurgie", "objectifs": [
+      {"version": "old", "annee": "3A", "annees": [3], "pages": [71]}]},
+    {"dossier": "chirurgie-cardio-vasculaire", "nom": "Chirurgie cardio-vasculaire", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [17]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [66, 67], "note": "p67 contient aussi les objectifs 6A."},
+      {"version": "old", "annee": "6A", "annees": [6], "pages": [67]}]},
+    {"dossier": "chirurgie-vasculaire-peripherique", "nom": "Chirurgie vasculaire périphérique", "categorie": "Chirurgie", "objectifs": [
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [68, 69], "note": "p68 contient les objectifs 4A et 6A ; p69 (séances d'ARC) commune."},
+      {"version": "old", "annee": "6A", "annees": [6], "pages": [68, 69], "note": "p68 contient les objectifs 4A et 6A ; p69 (séances d'ARC) commune."}]},
+    {"dossier": "urologie", "nom": "Urologie", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [20]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [76, 77]}]},
+    {"dossier": "orl", "nom": "ORL", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [21]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [74]}]},
+    {"dossier": "chirurgie-maxillo-faciale", "nom": "Stomatologie et chirurgie maxillo-faciale", "categorie": "Chirurgie", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [23]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [78]}]},
+    {"dossier": "ophtalmologie", "nom": "Ophtalmologie", "categorie": "Chirurgie", "objectifs": [
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [75]}]},
+    {"dossier": "chirurgie-plastique", "nom": "Chirurgie plastique et réparatrice", "categorie": "Chirurgie", "objectifs": [
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [79]}]},
+
+    {"dossier": "pediatrie", "nom": "Pédiatrie (néonatologie, pédiatrie)", "categorie": "Enfant", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [14]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [83, 84], "note": "p84 contient aussi le début de la chirurgie pédiatrique."}]},
+    {"dossier": "chirurgie-pediatrique", "nom": "Chirurgie pédiatrique", "categorie": "Enfant", "objectifs": [
+      {"version": "2022", "annee": "4A", "annees": [4], "pages": [15]},
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [84, 85]}]},
+    {"dossier": "reanimation-pediatrique", "nom": "Réanimation pédiatrique", "categorie": "Enfant", "objectifs": [
+      {"version": "old", "annee": "4A", "annees": [4], "pages": [86, 87]}]},
+
+    {"dossier": "gynecologie-obstetrique", "nom": "Gynécologie-obstétrique", "categorie": "Gynécologie-obstétrique", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [26]},
+      {"version": "2022", "annee": "6A", "annees": [6], "pages": [27]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [80], "note": "p80 contient aussi le début des objectifs 6A."},
+      {"version": "old", "annee": "6A", "annees": [6], "pages": [80, 81]}]},
+
+    {"dossier": "reanimation", "nom": "Urgences et réanimation (anesthésie-réanimation)", "categorie": "Réanimation", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [25]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [89, 90]}]},
+
+    {"dossier": "parasitologie-mycologie", "nom": "Parasitologie-mycologie", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [30]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [92]}]},
+    {"dossier": "microbiologie", "nom": "Microbiologie", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [32]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [93]}]},
+    {"dossier": "anatomie-pathologique", "nom": "Anatomie pathologique", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [31]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [94], "note": "Page partagée avec l'immunologie."}]},
+    {"dossier": "immunologie", "nom": "Immunologie", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [35]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [94], "note": "Page partagée avec l'anatomie pathologique."}]},
+    {"dossier": "genetique", "nom": "Génétique", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [34]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [95], "note": "Page partagée avec la biochimie."}]},
+    {"dossier": "biochimie", "nom": "Biochimie", "categorie": "Laboratoires", "objectifs": [
+      {"version": "2022", "annee": "5A", "annees": [5], "pages": [33]},
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [95], "note": "Page partagée avec la génétique."}]},
+    {"dossier": "hematologie-biologique", "nom": "Hématologie biologique (laboratoire)", "categorie": "Laboratoires", "objectifs": [
+      {"version": "old", "annee": "5A", "annees": [5], "pages": [96]}]},
+
+    {"dossier": "centre-de-sante", "nom": "Centre de santé - Médecine de famille", "categorie": "Centres de santé", "objectifs": [
+      {"version": "2022", "annee": "3A-6A", "annees": [3, 4, 5, 6], "pages": [28, 29]},
+      {"version": "old", "annee": "3A-6A", "annees": [3, 4, 5, 6], "pages": [98]}]}
+  ]
+}

@@ -1,0 +1,1213 @@
+[
+  {
+    "dossier": "immersion-1ere-annee",
+    "nom": "Stage d'immersion dans les structures de soins",
+    "categorie": "1er cycle",
+    "version": "2022",
+    "annee": "1A",
+    "annees": [
+      1
+    ],
+    "pages_source": [
+      3
+    ],
+    "fichier": "objective par specialite/immersion-1ere-annee/1A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "immersion-1ere-annee",
+    "nom": "Stage d'immersion dans les structures de soins",
+    "categorie": "1er cycle",
+    "version": "old",
+    "annee": "1A",
+    "annees": [
+      1
+    ],
+    "pages_source": [
+      36
+    ],
+    "fichier": "objective par specialite/immersion-1ere-annee/1A - objective de stage old.pdf",
+    "taille_ko": 95
+  },
+  {
+    "dossier": "medecine-sociale-2eme-annee",
+    "nom": "Stage de médecine sociale",
+    "categorie": "1er cycle",
+    "version": "2022",
+    "annee": "2A",
+    "annees": [
+      2
+    ],
+    "pages_source": [
+      4
+    ],
+    "fichier": "objective par specialite/medecine-sociale-2eme-annee/2A - objective de stage 2022.pdf",
+    "taille_ko": 59
+  },
+  {
+    "dossier": "medecine-sociale-2eme-annee",
+    "nom": "Stage de médecine sociale",
+    "categorie": "1er cycle",
+    "version": "old",
+    "annee": "2A",
+    "annees": [
+      2
+    ],
+    "pages_source": [
+      37
+    ],
+    "fichier": "objective par specialite/medecine-sociale-2eme-annee/2A - objective de stage old.pdf",
+    "taille_ko": 51,
+    "note": "Objectifs non encore élaborés dans l'ancien guide (texte seul)."
+  },
+  {
+    "dossier": "semiologie-soins-infirmiers",
+    "nom": "Sémiologie - soins infirmiers",
+    "categorie": "Stages fondamentaux",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      39
+    ],
+    "fichier": "objective par specialite/semiologie-soins-infirmiers/3A - objective de stage old.pdf",
+    "taille_ko": 173
+  },
+  {
+    "dossier": "stage-fondamental-medecine",
+    "nom": "Stage fondamental de médecine",
+    "categorie": "Stages fondamentaux",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      41
+    ],
+    "fichier": "objective par specialite/stage-fondamental-medecine/3A - objective de stage old.pdf",
+    "taille_ko": 170
+  },
+  {
+    "dossier": "stage-fondamental-chirurgie",
+    "nom": "Stage fondamental de chirurgie",
+    "categorie": "Stages fondamentaux",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      42
+    ],
+    "fichier": "objective par specialite/stage-fondamental-chirurgie/3A - objective de stage old.pdf",
+    "taille_ko": 163
+  },
+  {
+    "dossier": "appareil-locomoteur",
+    "nom": "Pathologie de l'appareil locomoteur (traumatologie, rhumatologie, réadaptation)",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      5,
+      6
+    ],
+    "fichier": "objective par specialite/appareil-locomoteur/3A - objective de stage 2022.pdf",
+    "taille_ko": 24
+  },
+  {
+    "dossier": "cardiologie",
+    "nom": "Cardiologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      12
+    ],
+    "fichier": "objective par specialite/cardiologie/3A - objective de stage 2022.pdf",
+    "taille_ko": 59
+  },
+  {
+    "dossier": "cardiologie",
+    "nom": "Cardiologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      45,
+      46
+    ],
+    "fichier": "objective par specialite/cardiologie/3A - objective de stage old.pdf",
+    "taille_ko": 291
+  },
+  {
+    "dossier": "cardiologie",
+    "nom": "Cardiologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      47,
+      48
+    ],
+    "fichier": "objective par specialite/cardiologie/6A - objective de stage old.pdf",
+    "taille_ko": 222
+  },
+  {
+    "dossier": "pneumologie",
+    "nom": "Pneumo-phtisiologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      9
+    ],
+    "fichier": "objective par specialite/pneumologie/3A - objective de stage 2022.pdf",
+    "taille_ko": 718
+  },
+  {
+    "dossier": "pneumologie",
+    "nom": "Pneumo-phtisiologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      58,
+      59
+    ],
+    "fichier": "objective par specialite/pneumologie/3A - objective de stage old.pdf",
+    "taille_ko": 302,
+    "note": "p58 contient aussi les objectifs 6A ; p59 (tâches d'apprentissage, ARC) commune."
+  },
+  {
+    "dossier": "pneumologie",
+    "nom": "Pneumo-phtisiologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      58,
+      59
+    ],
+    "fichier": "objective par specialite/pneumologie/6A - objective de stage old.pdf",
+    "taille_ko": 302,
+    "note": "p58 contient aussi les objectifs 3A ; p59 (tâches d'apprentissage, ARC) commune."
+  },
+  {
+    "dossier": "gastro-enterologie",
+    "nom": "Gastro-entérologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      11
+    ],
+    "fichier": "objective par specialite/gastro-enterologie/3A - objective de stage 2022.pdf",
+    "taille_ko": 171
+  },
+  {
+    "dossier": "gastro-enterologie",
+    "nom": "Gastro-entérologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      52
+    ],
+    "fichier": "objective par specialite/gastro-enterologie/3A - objective de stage old.pdf",
+    "taille_ko": 134
+  },
+  {
+    "dossier": "maladies-infectieuses",
+    "nom": "Maladies infectieuses",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      7
+    ],
+    "fichier": "objective par specialite/maladies-infectieuses/3A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "maladies-infectieuses",
+    "nom": "Maladies infectieuses",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      55
+    ],
+    "fichier": "objective par specialite/maladies-infectieuses/3A - objective de stage old.pdf",
+    "taille_ko": 146
+  },
+  {
+    "dossier": "medecine-interne",
+    "nom": "Médecine interne",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      54
+    ],
+    "fichier": "objective par specialite/medecine-interne/3A - objective de stage old.pdf",
+    "taille_ko": 168
+  },
+  {
+    "dossier": "neurologie",
+    "nom": "Neurologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      57
+    ],
+    "fichier": "objective par specialite/neurologie/3A - objective de stage old.pdf",
+    "taille_ko": 145
+  },
+  {
+    "dossier": "rhumatologie",
+    "nom": "Rhumatologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      44
+    ],
+    "fichier": "objective par specialite/rhumatologie/4A - objective de stage old.pdf",
+    "taille_ko": 169
+  },
+  {
+    "dossier": "medecine-physique-readaptation",
+    "nom": "Médecine physique et réadaptation fonctionnelle",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "XA",
+    "annees": [],
+    "pages_source": [
+      61
+    ],
+    "fichier": "objective par specialite/medecine-physique-readaptation/XA - objective de stage old.pdf",
+    "taille_ko": 225,
+    "note": "Service absent du cursus de l'ancien guide : année non précisée."
+  },
+  {
+    "dossier": "dermatologie",
+    "nom": "Dermatologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      13
+    ],
+    "fichier": "objective par specialite/dermatologie/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "dermatologie",
+    "nom": "Dermatologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      49
+    ],
+    "fichier": "objective par specialite/dermatologie/4A - objective de stage old.pdf",
+    "taille_ko": 147
+  },
+  {
+    "dossier": "oncologie-hematologie",
+    "nom": "Cancérologie - hématologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      16
+    ],
+    "fichier": "objective par specialite/oncologie-hematologie/4A - objective de stage 2022.pdf",
+    "taille_ko": 23
+  },
+  {
+    "dossier": "oncologie-hematologie",
+    "nom": "Cancérologie - hématologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      53,
+      62
+    ],
+    "fichier": "objective par specialite/oncologie-hematologie/4A - objective de stage old.pdf",
+    "taille_ko": 333,
+    "note": "Ancien guide : hématologie clinique (p53) + radiothérapie-oncologie (p62)."
+  },
+  {
+    "dossier": "endocrinologie",
+    "nom": "Endocrinologie et maladies métaboliques",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      18
+    ],
+    "fichier": "objective par specialite/endocrinologie/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "endocrinologie",
+    "nom": "Endocrinologie et maladies métaboliques",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      50,
+      51
+    ],
+    "fichier": "objective par specialite/endocrinologie/5A - objective de stage old.pdf",
+    "taille_ko": 227
+  },
+  {
+    "dossier": "imagerie-medicale",
+    "nom": "Imagerie médicale / Radiologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      19
+    ],
+    "fichier": "objective par specialite/imagerie-medicale/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "imagerie-medicale",
+    "nom": "Imagerie médicale / Radiologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      63,
+      64,
+      86
+    ],
+    "fichier": "objective par specialite/imagerie-medicale/4A - objective de stage old.pdf",
+    "taille_ko": 534,
+    "note": "p86 = radiologie pédiatrique (même page que la réanimation pédiatrique)."
+  },
+  {
+    "dossier": "nephrologie",
+    "nom": "Néphrologie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      22
+    ],
+    "fichier": "objective par specialite/nephrologie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "nephrologie",
+    "nom": "Néphrologie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "4A-5A",
+    "annees": [
+      4,
+      5
+    ],
+    "pages_source": [
+      56
+    ],
+    "fichier": "objective par specialite/nephrologie/4A-5A - objective de stage old.pdf",
+    "taille_ko": 216,
+    "note": "Le cursus de l'ancien guide place la néphrologie en 4A et en 5A."
+  },
+  {
+    "dossier": "psychiatrie",
+    "nom": "Psychiatrie",
+    "categorie": "Médecine",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      24
+    ],
+    "fichier": "objective par specialite/psychiatrie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "psychiatrie",
+    "nom": "Psychiatrie",
+    "categorie": "Médecine",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      60
+    ],
+    "fichier": "objective par specialite/psychiatrie/5A - objective de stage old.pdf",
+    "taille_ko": 216
+  },
+  {
+    "dossier": "chirurgie-viscerale",
+    "nom": "Chirurgie viscérale",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      8
+    ],
+    "fichier": "objective par specialite/chirurgie-viscerale/3A - objective de stage 2022.pdf",
+    "taille_ko": 65
+  },
+  {
+    "dossier": "chirurgie-viscerale",
+    "nom": "Chirurgie viscérale",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      70
+    ],
+    "fichier": "objective par specialite/chirurgie-viscerale/3A - objective de stage old.pdf",
+    "taille_ko": 204
+  },
+  {
+    "dossier": "neurochirurgie",
+    "nom": "Neurochirurgie",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      10
+    ],
+    "fichier": "objective par specialite/neurochirurgie/3A - objective de stage 2022.pdf",
+    "taille_ko": 556
+  },
+  {
+    "dossier": "neurochirurgie",
+    "nom": "Neurochirurgie",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      72,
+      73
+    ],
+    "fichier": "objective par specialite/neurochirurgie/3A - objective de stage old.pdf",
+    "taille_ko": 303
+  },
+  {
+    "dossier": "traumatologie-orthopedie",
+    "nom": "Traumatologie-orthopédie",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "3A",
+    "annees": [
+      3
+    ],
+    "pages_source": [
+      71
+    ],
+    "fichier": "objective par specialite/traumatologie-orthopedie/3A - objective de stage old.pdf",
+    "taille_ko": 195
+  },
+  {
+    "dossier": "chirurgie-cardio-vasculaire",
+    "nom": "Chirurgie cardio-vasculaire",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      17
+    ],
+    "fichier": "objective par specialite/chirurgie-cardio-vasculaire/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "chirurgie-cardio-vasculaire",
+    "nom": "Chirurgie cardio-vasculaire",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      66,
+      67
+    ],
+    "fichier": "objective par specialite/chirurgie-cardio-vasculaire/4A - objective de stage old.pdf",
+    "taille_ko": 341,
+    "note": "p67 contient aussi les objectifs 6A."
+  },
+  {
+    "dossier": "chirurgie-cardio-vasculaire",
+    "nom": "Chirurgie cardio-vasculaire",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      67
+    ],
+    "fichier": "objective par specialite/chirurgie-cardio-vasculaire/6A - objective de stage old.pdf",
+    "taille_ko": 144
+  },
+  {
+    "dossier": "chirurgie-vasculaire-peripherique",
+    "nom": "Chirurgie vasculaire périphérique",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      68,
+      69
+    ],
+    "fichier": "objective par specialite/chirurgie-vasculaire-peripherique/4A - objective de stage old.pdf",
+    "taille_ko": 224,
+    "note": "p68 contient les objectifs 4A et 6A ; p69 (séances d'ARC) commune."
+  },
+  {
+    "dossier": "chirurgie-vasculaire-peripherique",
+    "nom": "Chirurgie vasculaire périphérique",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      68,
+      69
+    ],
+    "fichier": "objective par specialite/chirurgie-vasculaire-peripherique/6A - objective de stage old.pdf",
+    "taille_ko": 224,
+    "note": "p68 contient les objectifs 4A et 6A ; p69 (séances d'ARC) commune."
+  },
+  {
+    "dossier": "urologie",
+    "nom": "Urologie",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      20
+    ],
+    "fichier": "objective par specialite/urologie/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "urologie",
+    "nom": "Urologie",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      76,
+      77
+    ],
+    "fichier": "objective par specialite/urologie/4A - objective de stage old.pdf",
+    "taille_ko": 297
+  },
+  {
+    "dossier": "orl",
+    "nom": "ORL",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      21
+    ],
+    "fichier": "objective par specialite/orl/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "orl",
+    "nom": "ORL",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      74
+    ],
+    "fichier": "objective par specialite/orl/5A - objective de stage old.pdf",
+    "taille_ko": 145
+  },
+  {
+    "dossier": "chirurgie-maxillo-faciale",
+    "nom": "Stomatologie et chirurgie maxillo-faciale",
+    "categorie": "Chirurgie",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      23
+    ],
+    "fichier": "objective par specialite/chirurgie-maxillo-faciale/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "chirurgie-maxillo-faciale",
+    "nom": "Stomatologie et chirurgie maxillo-faciale",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      78
+    ],
+    "fichier": "objective par specialite/chirurgie-maxillo-faciale/5A - objective de stage old.pdf",
+    "taille_ko": 156
+  },
+  {
+    "dossier": "ophtalmologie",
+    "nom": "Ophtalmologie",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      75
+    ],
+    "fichier": "objective par specialite/ophtalmologie/5A - objective de stage old.pdf",
+    "taille_ko": 154
+  },
+  {
+    "dossier": "chirurgie-plastique",
+    "nom": "Chirurgie plastique et réparatrice",
+    "categorie": "Chirurgie",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      79
+    ],
+    "fichier": "objective par specialite/chirurgie-plastique/5A - objective de stage old.pdf",
+    "taille_ko": 179
+  },
+  {
+    "dossier": "pediatrie",
+    "nom": "Pédiatrie (néonatologie, pédiatrie)",
+    "categorie": "Enfant",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      14
+    ],
+    "fichier": "objective par specialite/pediatrie/4A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "pediatrie",
+    "nom": "Pédiatrie (néonatologie, pédiatrie)",
+    "categorie": "Enfant",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      83,
+      84
+    ],
+    "fichier": "objective par specialite/pediatrie/4A - objective de stage old.pdf",
+    "taille_ko": 369,
+    "note": "p84 contient aussi le début de la chirurgie pédiatrique."
+  },
+  {
+    "dossier": "chirurgie-pediatrique",
+    "nom": "Chirurgie pédiatrique",
+    "categorie": "Enfant",
+    "version": "2022",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      15
+    ],
+    "fichier": "objective par specialite/chirurgie-pediatrique/4A - objective de stage 2022.pdf",
+    "taille_ko": 17
+  },
+  {
+    "dossier": "chirurgie-pediatrique",
+    "nom": "Chirurgie pédiatrique",
+    "categorie": "Enfant",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      84,
+      85
+    ],
+    "fichier": "objective par specialite/chirurgie-pediatrique/4A - objective de stage old.pdf",
+    "taille_ko": 341
+  },
+  {
+    "dossier": "reanimation-pediatrique",
+    "nom": "Réanimation pédiatrique",
+    "categorie": "Enfant",
+    "version": "old",
+    "annee": "4A",
+    "annees": [
+      4
+    ],
+    "pages_source": [
+      86,
+      87
+    ],
+    "fichier": "objective par specialite/reanimation-pediatrique/4A - objective de stage old.pdf",
+    "taille_ko": 278
+  },
+  {
+    "dossier": "gynecologie-obstetrique",
+    "nom": "Gynécologie-obstétrique",
+    "categorie": "Gynécologie-obstétrique",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      26
+    ],
+    "fichier": "objective par specialite/gynecologie-obstetrique/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "gynecologie-obstetrique",
+    "nom": "Gynécologie-obstétrique",
+    "categorie": "Gynécologie-obstétrique",
+    "version": "2022",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      27
+    ],
+    "fichier": "objective par specialite/gynecologie-obstetrique/6A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "gynecologie-obstetrique",
+    "nom": "Gynécologie-obstétrique",
+    "categorie": "Gynécologie-obstétrique",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      80
+    ],
+    "fichier": "objective par specialite/gynecologie-obstetrique/5A - objective de stage old.pdf",
+    "taille_ko": 168,
+    "note": "p80 contient aussi le début des objectifs 6A."
+  },
+  {
+    "dossier": "gynecologie-obstetrique",
+    "nom": "Gynécologie-obstétrique",
+    "categorie": "Gynécologie-obstétrique",
+    "version": "old",
+    "annee": "6A",
+    "annees": [
+      6
+    ],
+    "pages_source": [
+      80,
+      81
+    ],
+    "fichier": "objective par specialite/gynecologie-obstetrique/6A - objective de stage old.pdf",
+    "taille_ko": 270
+  },
+  {
+    "dossier": "reanimation",
+    "nom": "Urgences et réanimation (anesthésie-réanimation)",
+    "categorie": "Réanimation",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      25
+    ],
+    "fichier": "objective par specialite/reanimation/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "reanimation",
+    "nom": "Urgences et réanimation (anesthésie-réanimation)",
+    "categorie": "Réanimation",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      89,
+      90
+    ],
+    "fichier": "objective par specialite/reanimation/5A - objective de stage old.pdf",
+    "taille_ko": 297
+  },
+  {
+    "dossier": "parasitologie-mycologie",
+    "nom": "Parasitologie-mycologie",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      30
+    ],
+    "fichier": "objective par specialite/parasitologie-mycologie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "parasitologie-mycologie",
+    "nom": "Parasitologie-mycologie",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      92
+    ],
+    "fichier": "objective par specialite/parasitologie-mycologie/5A - objective de stage old.pdf",
+    "taille_ko": 101
+  },
+  {
+    "dossier": "microbiologie",
+    "nom": "Microbiologie",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      32
+    ],
+    "fichier": "objective par specialite/microbiologie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "microbiologie",
+    "nom": "Microbiologie",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      93
+    ],
+    "fichier": "objective par specialite/microbiologie/5A - objective de stage old.pdf",
+    "taille_ko": 109
+  },
+  {
+    "dossier": "anatomie-pathologique",
+    "nom": "Anatomie pathologique",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      31
+    ],
+    "fichier": "objective par specialite/anatomie-pathologique/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "anatomie-pathologique",
+    "nom": "Anatomie pathologique",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      94
+    ],
+    "fichier": "objective par specialite/anatomie-pathologique/5A - objective de stage old.pdf",
+    "taille_ko": 130,
+    "note": "Page partagée avec l'immunologie."
+  },
+  {
+    "dossier": "immunologie",
+    "nom": "Immunologie",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      35
+    ],
+    "fichier": "objective par specialite/immunologie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "immunologie",
+    "nom": "Immunologie",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      94
+    ],
+    "fichier": "objective par specialite/immunologie/5A - objective de stage old.pdf",
+    "taille_ko": 130,
+    "note": "Page partagée avec l'anatomie pathologique."
+  },
+  {
+    "dossier": "genetique",
+    "nom": "Génétique",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      34
+    ],
+    "fichier": "objective par specialite/genetique/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "genetique",
+    "nom": "Génétique",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      95
+    ],
+    "fichier": "objective par specialite/genetique/5A - objective de stage old.pdf",
+    "taille_ko": 140,
+    "note": "Page partagée avec la biochimie."
+  },
+  {
+    "dossier": "biochimie",
+    "nom": "Biochimie",
+    "categorie": "Laboratoires",
+    "version": "2022",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      33
+    ],
+    "fichier": "objective par specialite/biochimie/5A - objective de stage 2022.pdf",
+    "taille_ko": 22
+  },
+  {
+    "dossier": "biochimie",
+    "nom": "Biochimie",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      95
+    ],
+    "fichier": "objective par specialite/biochimie/5A - objective de stage old.pdf",
+    "taille_ko": 140,
+    "note": "Page partagée avec la génétique."
+  },
+  {
+    "dossier": "hematologie-biologique",
+    "nom": "Hématologie biologique (laboratoire)",
+    "categorie": "Laboratoires",
+    "version": "old",
+    "annee": "5A",
+    "annees": [
+      5
+    ],
+    "pages_source": [
+      96
+    ],
+    "fichier": "objective par specialite/hematologie-biologique/5A - objective de stage old.pdf",
+    "taille_ko": 90
+  },
+  {
+    "dossier": "centre-de-sante",
+    "nom": "Centre de santé - Médecine de famille",
+    "categorie": "Centres de santé",
+    "version": "2022",
+    "annee": "3A-6A",
+    "annees": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "pages_source": [
+      28,
+      29
+    ],
+    "fichier": "objective par specialite/centre-de-sante/3A-6A - objective de stage 2022.pdf",
+    "taille_ko": 19
+  },
+  {
+    "dossier": "centre-de-sante",
+    "nom": "Centre de santé - Médecine de famille",
+    "categorie": "Centres de santé",
+    "version": "old",
+    "annee": "3A-6A",
+    "annees": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "pages_source": [
+      98
+    ],
+    "fichier": "objective par specialite/centre-de-sante/3A-6A - objective de stage old.pdf",
+    "taille_ko": 179
+  }
+]
