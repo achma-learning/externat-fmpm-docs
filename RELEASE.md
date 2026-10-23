@@ -28,11 +28,10 @@ Also: an APK signed with a different key can't be installed over the current one
 ## How to release
 **Easiest:** ask Claude Code "release v1.0.1" (or the next version). It does the steps below.
 
-🤖 Agent mode, through CI: no `gh` CLI or release-creating tool is needed, because pushing the tag is the release.
-1. CI green on `main` (or on the commit to tag).
-2. Move CHANGELOG `[Unreleased]` → `## [vX.Y.Z] — YYYY-MM-DD`. The workflow copies that section into the release notes.
-3. `git tag -a vX.Y.Z <sha> -m "Externat FMPM vX.Y.Z"` → `git push origin vX.Y.Z`.
-4. The **Android** workflow builds and signs the APK, zips it with `README-installation.txt`, and runs `gh release create` with SHA-256 sums. A tag with a hyphen (`-beta.1`, `-rc.1`) becomes a **pre-release**.
+🤖 Agent mode, through CI. No tag push is needed (Claude Code cloud sessions can't push tags): the workflow creates the tag itself.
+1. Move CHANGELOG `[Unreleased]` → `## [vX.Y.Z] — YYYY-MM-DD` (the workflow copies that section into the release notes) and merge to `main`; CI green on `main`.
+2. Start the **Android** workflow manually on `main` with input `version` = `X.Y.Z`: GitHub → Actions → Android → **Run workflow** (or Claude Code's GitHub Actions tool). Pushing a tag `vX.Y.Z` from a terminal does the same.
+3. The workflow builds and signs the APK, zips it with `README-installation.txt`, and runs `gh release create vX.Y.Z --target <main sha>` with SHA-256 sums. A version with a hyphen (`1.1.0-beta.1`) becomes a **pre-release**. A manual run from another branch, or with a malformed version, fails on purpose.
 5. Check the release page, then mark the CHANGELOG heading ✅ and add a row below.
 
 Manual fallback (🧭): GitHub → Actions → Android → the tag's run → artifact `externat-fmpm-apk`, then Releases → Draft a new release → choose the tag → drag in the APK.

@@ -17,7 +17,7 @@ _Last synced: 2026-10-23 @ f5eac2f (main, after PR #1)_
 - **Tests + lint:** `cd android && ./gradlew :app:testDebugUnitTest :app:lintDebug`.
 - **Build / deploy:** every push to `main` → GitHub Actions builds the APK (artifact `externat-fmpm-apk`). Pushing a tag `v1.2.3` → GitHub Release with `.apk` + `.zip`. Steps are in `RELEASE.md`.
 - **Required secrets:** none. The release key is committed on purpose (`android/signing/`). The Gradle build only reads `VERSION_CODE` and `VERSION_NAME`, which CI sets (`android/app/build.gradle.kts:13-14`). No `.env` file.
-- **Ship an update:** ask Claude Code "release v1.0.1". That means: move CHANGELOG `[Unreleased]` to the new version, merge to `main`, push the tag (`RELEASE.md`).
+- **Ship an update:** ask Claude Code "release v1.0.1". That means: move CHANGELOG `[Unreleased]` to the new version, merge to `main`, then run the **Android** workflow on `main` with input `version=1.0.1`. The workflow creates the tag and the Release (`RELEASE.md`). Cloud sessions can't push tags (`the remote end hung up unexpectedly`).
 
 ## 3. Tech Stack
 - **Data side:** Python 3, `pymupdf` (cut/compress/read PDFs), `python-docx` (reads the hand-corrected transcriptions).
@@ -78,7 +78,7 @@ _Last synced: 2026-10-23 @ f5eac2f (main, after PR #1)_
 
 ## 7. Current State
 - **Last shipped:** PR #1 merged into `main` (data pipeline with 1,331 objectives, the full Android app, CI, docs). CI is green on `main`, and the APK artifact builds (debug-signed: no secrets yet).
-- **Working on now:** first release `v1.0.0`. Signing switched from GitHub secrets to the public committed key (owner: "make the key publique"). PR #2 carries it; after merge, tag `v1.0.0` on `main`.
+- **Working on now:** first release `v1.0.0`. PR #2 (public signing key) is merged. Tag push from the cloud session was refused, so the workflow gained a manual `version` input that creates tag + Release. After that PR merges, run it with `version=1.0.0`.
 - **Next up:** see `TRAJECTORY.md`.
 
 ## 8. Update Protocol (Verbatim)

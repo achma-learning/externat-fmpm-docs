@@ -31,6 +31,7 @@ _First release of the Android app, signed with the public key committed in `andr
 - `data/objectifs.json` — 1,331 objectives extracted from `drafts/*.docx` by `scripts/build_app_data.py`, with `data/objectifs_report.md` for review. `(a38a66a)` ✅ verified (a38a66a): deterministic rerun, `check_data.py` OK
 - `scripts/check_data.py` — CI check: every `fichier` exists, objectives match `index.json`, unique IDs. `(a38a66a)`
 - GitHub Actions `android.yml`: data check, lint, tests, R8 APK artifact `externat-fmpm-apk`; `v*` tag → Release with `.apk` + `.zip`. `(b30c4e8)`
+- Manual release: run the Android workflow on `main` with input `version` (e.g. `1.0.1`); it creates the tag and the Release itself, since cloud sessions can't push tags. `(pending)`
 - Hyphenated tags (`v1.1.0-beta.1`) are published as GitHub pre-releases; release notes start with the tag's CHANGELOG section. `(0006055, bdc0563)`
 
 ### Changed
