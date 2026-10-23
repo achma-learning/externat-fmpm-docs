@@ -16,7 +16,8 @@ _Last synced: 2026-10-23 @ f5eac2f (main, after PR #1)_
 - **See the app:** `cd android && ./gradlew :app:assembleDebug` → install `android/app/build/outputs/apk/debug/app-debug.apk` on a phone.
 - **Tests + lint:** `cd android && ./gradlew :app:testDebugUnitTest :app:lintDebug`.
 - **Build / deploy:** every push to `main` → GitHub Actions builds the APK (artifact `externat-fmpm-apk`). Pushing a tag `v1.2.3` → GitHub Release with `.apk` + `.zip`. Steps are in `RELEASE.md`.
-- **Required secrets** (GitHub Actions, names only): `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`. The Gradle build reads `VERSION_CODE`, `VERSION_NAME`, `KEYSTORE_FILE`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD` (`android/app/build.gradle.kts:13-17, 35-37`). No `.env` file.
+- **Required secrets:** none. The release key is committed on purpose (`android/signing/`). The Gradle build only reads `VERSION_CODE` and `VERSION_NAME`, which CI sets (`android/app/build.gradle.kts:13-14`). No `.env` file.
+- **Ship an update:** ask Claude Code "release v1.0.1". That means: move CHANGELOG `[Unreleased]` to the new version, merge to `main`, push the tag (`RELEASE.md`).
 
 ## 3. Tech Stack
 - **Data side:** Python 3, `pymupdf` (cut/compress/read PDFs), `python-docx` (reads the hand-corrected transcriptions).
@@ -40,22 +41,23 @@ _Last synced: 2026-10-23 @ f5eac2f (main, after PR #1)_
 - `…/ui/viewer/PdfViewer.kt` + `PdfDocument.kt` — PDF viewer (zoom, cache, rendering).
 - `android/app/src/test/…/CatalogTest.kt`, `AppSmokeTest.kt` — data tests + Robolectric UI smoke tests.
 - `.github/workflows/android.yml` — CI, signing (and the stable-tag guard), release creation.
-- `RELEASE.md` — how to ship; `android/README.md` — app architecture and keystore setup.
+- `android/signing/externat-fmpm-release.jks` — the public release key. **Never replace it.**
+- `RELEASE.md` — how to ship; `android/README.md` — app architecture.
 
 ## 5. Rules For Editing This Code
 - **Never invent, reword or "fix the meaning" of an objective.** Only light cleanup (hyphenation, spaces, merged lines). Real source errors are fixed in `drafts/*.docx`, then the script is rerun.
 - Content changes = edit `data/specialites.json` or `drafts/*.docx` → run both build scripts → commit the generated files. No app code changes for content.
-- Never commit APKs, AABs, keystores, `local.properties` or build folders (`.gitignore`). Every committed file stays under 25 MB (GitHub web upload limit).
+- Never commit APKs, AABs, other keystores, `local.properties` or build folders (`.gitignore`). The one committed key is `android/signing/externat-fmpm-release.jks`. Every committed file stays under 25 MB (GitHub web upload limit).
 - Don't copy PDFs into `android/`: the Gradle task pulls them from the repo at build time.
 - App: no network, no runtime permissions, no analytics, no Firebase. Stable AndroidX/Jetpack libraries only, no alpha. Every new dependency needs a reason.
 - UI text is French, in `res/values/strings.xml` (plurals where a count is shown).
 - Lint must stay at "No issues found" (`abortOnError = true`).
 - Keep the `<!-- TABLE:START -->` / `<!-- TABLE:END -->` markers in `README.md`.
-- Releases: stable versions only from `main`, only with the fixed keystore. Tags are never moved or deleted (`RELEASE.md`).
+- Releases: tags on `main` only, never moved or deleted (`RELEASE.md`).
 
 ## 6. Fragile Bits & Landmines
 - **Objective IDs are positional** (`cardiologie:2022:3A:01` = 1st objective of that entry). Inserting or removing an objective in a docx shifts later IDs, so already-ticked boxes move to the wrong objective. Prefer appending.
-- **Signing key = update path.** An APK can only be updated by one signed with the same key. Without the secrets, CI signs with a throwaway debug key (uninstall needed, checklist lost). A stable tag without the secrets fails on purpose with `Tag stable … sans secrets de signature`.
+- **Signing key = update path.** Android only updates an app with an APK signed by the same key. All releases are signed with the public repo key (`android/signing/`, password in `build.gradle.kts`, public on purpose). Replacing or regenerating that key forces every user to uninstall, and the checklist is lost. Accepted trade-off: anyone can sign an "update" with it.
 - **Accented file names:** `others/Guide-de-létudiant-FMPM-2024.pdf` is stored NFD in git, the others NFC. The copy task matches names after Unicode normalization (`build.gradle.kts`, `resolve()` at line 137). The JVM also needs a UTF-8 locale on Linux (symptom: `Failed to create MD5 hash for file … th��sard`).
 - **`build_app_data.py` heuristics:**
   - a line ending with ":" becomes the sub-header of the lines after it;
@@ -76,7 +78,7 @@ _Last synced: 2026-10-23 @ f5eac2f (main, after PR #1)_
 
 ## 7. Current State
 - **Last shipped:** PR #1 merged into `main` (data pipeline with 1,331 objectives, the full Android app, CI, docs). CI is green on `main`, and the APK artifact builds (debug-signed: no secrets yet).
-- **Working on now:** first stable release `v1.0.0`. Blocked until the owner adds the 4 keystore secrets. Prep (`RELEASE.md`, CHANGELOG `[v1.0.0]`, stable-tag guard, release notes from CHANGELOG) is on branch `claude/eager-hawking-5q04vs`.
+- **Working on now:** first release `v1.0.0`. Signing switched from GitHub secrets to the public committed key (owner: "make the key publique"). PR #2 carries it; after merge, tag `v1.0.0` on `main`.
 - **Next up:** see `TRAJECTORY.md`.
 
 ## 8. Update Protocol (Verbatim)

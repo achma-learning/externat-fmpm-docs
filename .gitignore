@@ -19,6 +19,8 @@ local.properties
 *.apk
 *.aab
 *.jks
+# … sauf la clé de release publique, versionnée exprès (voir android/signing/README.md)
+!android/signing/externat-fmpm-release.jks
 *.keystore
 *.idsig
 .idea/

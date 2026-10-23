@@ -19,13 +19,15 @@ The PDFs and JSON in the repo are not a separate track: they ship inside the APK
 2. Download the older `.apk` from its release page (pinned link: `…/releases/download/<tag>/externat-fmpm-<version>.apk`) and install it.
 3. Nothing auto-updates (no store, no update check), so the rollback sticks.
 
-Also: an APK signed with a different key can't be installed over the current one either. Every build made without the keystore secrets uses a new debug key.
+Also: an APK signed with a different key can't be installed over the current one either. All releases use the repo key, so this only concerns APKs from other sources (or debug builds).
 
 ## Signing
-- **Fixed key required** for updates to install in place: secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD` (Settings → Secrets and variables → Actions). How to create them: [`android/README.md`](android/README.md#signature--clé-fixe-obligatoire-pour-les-mises-à-jour). The key itself lives only on your computer and in GitHub secrets. Never commit it, never attach it.
-- Without the secrets, CI warns and signs with a throwaway debug key (branches, pre-release tags), and **refuses** a stable tag such as `v1.0.0`.
+- Every release APK is signed with the **public key committed in the repo**: `android/signing/externat-fmpm-release.jks`, alias `externat`, password `externat-fmpm` (`android/app/build.gradle.kts`). It's public on purpose: personal project, sharing is fine. No GitHub secrets needed.
+- **Never replace or regenerate it:** a new key means every user has to uninstall (checklist lost). Accepted trade-off: anyone could sign an APK that phones accept as an update of this app.
 
 ## How to release
+**Easiest:** ask Claude Code "release v1.0.1" (or the next version). It does the steps below.
+
 🤖 Agent mode, through CI: no `gh` CLI or release-creating tool is needed, because pushing the tag is the release.
 1. CI green on `main` (or on the commit to tag).
 2. Move CHANGELOG `[Unreleased]` → `## [vX.Y.Z] — YYYY-MM-DD`. The workflow copies that section into the release notes.
@@ -37,7 +39,6 @@ Manual fallback (🧭): GitHub → Actions → Android → the tag's run → art
 
 ## Release checklist
 - [ ] `python scripts/check_data.py` OK; `./gradlew :app:lintDebug :app:testDebugUnitTest :app:assembleRelease` green (CI does all three)
-- [ ] Keystore secrets present (required from `v1.0.0` on)
 - [ ] CHANGELOG section dated `## [vX.Y.Z] — YYYY-MM-DD`
 - [ ] Tag pushed; release lists `.apk` + `.zip` with non-zero sizes and SHA-256; one download tested
 - [ ] CHANGELOG heading ✅ with the tag SHA; history row added here
@@ -46,7 +47,7 @@ Manual fallback (🧭): GitHub → Actions → Android → the tag's run → art
 Newest first.
 | Date | Tag | Commit | Files | Notes |
 |---|---|---|---|---|
-| _pending_ | `v1.0.0` | _pending_ | `.apk`, `.zip` | first release, fixed release key |
+| _pending_ | `v1.0.0` | _pending_ | `.apk`, `.zip` | first release, public repo key |
 
 ---
 

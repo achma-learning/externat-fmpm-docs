@@ -30,7 +30,7 @@ export LC_ALL=C.UTF-8                 # Linux : noms de fichiers accentués
 ./gradlew :app:testDebugUnitTest :app:lintDebug
 ```
 
-Une version publiée (tag `v*`) doit être signée avec une **clé fixe**, sinon les mises à jour ne s'installent pas par-dessus et la checklist est perdue. Mise en place (keytool, base64, secrets GitHub) : [`android/README.md`](android/README.md#signature--clé-fixe-obligatoire-pour-les-mises-à-jour). Publier une version : [`RELEASE.md`](RELEASE.md).
+Les APK sont signés avec une clé **publique, versionnée dans le dépôt** (`android/signing/`) : pas de secret à configurer, et chaque nouvelle version s'installe par-dessus l'ancienne sans perdre la checklist. Publier une version : [`RELEASE.md`](RELEASE.md) (ou demander à Claude Code « release v1.0.1 »).
 
 ## Utilisation
 

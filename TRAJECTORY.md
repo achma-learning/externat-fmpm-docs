@@ -7,15 +7,15 @@ A native Android app, **"Externat FMPM"**, for my personal phone and tablet. It 
 **Done when:**
 - [ ] Installs and runs on Android 7 → latest, phone and tablet, portrait and landscape, light and dark; works in airplane mode and requests no permissions.
 - [ ] All 78 objective PDFs and 6 guides open, share to WhatsApp and save via "Enregistrer".
-- [ ] Filters, name search and accent-insensitive full-text search work; checklist, favorites and recents survive restarts **and app updates** (same keystore).
+- [ ] Filters, name search and accent-insensitive full-text search work; checklist, favorites and recents survive restarts **and app updates** (same repo key).
 - [ ] CI produces the APK artifact; a `v*` tag produces a Release with `.apk` + `.zip`.
-- [ ] No committed file ≥ 25 MB; no APK/keystore in git.
+- [ ] No committed file ≥ 25 MB; no APK in git (only the public release key is committed, on purpose).
 
 ## ✅ To Do
 
 ### Now
-- [ ] **T016** — Add the keystore secrets (`KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`) — "add the keystore secrets first" (owner's step: no tool can write secrets) · `(chat)`
-- [ ] **T017** — "Release v1.0.0 directly": merge the release-prep PR, tag `v1.0.0` on `main`, verify the Release has `.apk` + `.zip` · start when: T016 done · `(chat)`
+- [ ] **T025** — "Make the key publique": commit the release key, drop GitHub secrets — "i just want to share the apps… keep it simple" · `(chat)`
+- [ ] **T017** — "Release v1.0.0 directly": merge the release-prep PR, tag `v1.0.0` on `main`, verify the Release has `.apk` + `.zip` · start when: T025 merged · `(chat)`
 
 ### Next
 - [ ] **T018** — Run the acceptance checklist on my phone and tablet: PDF rendering and zoom, WhatsApp share, "Enregistrer", 200 % font size, airplane mode — not verifiable in the cloud sandbox · `(chat)`
@@ -39,6 +39,7 @@ A native Android app, **"Externat FMPM"**, for my personal phone and tablet. It 
 <!-- Older done items (T001 plan, T002 objectifs.json, T011 README section, T012 android/README.md, T013 .gitignore + 25 MB check) are recorded in CHANGELOG.md (a38a66a, 1e37530, 9e7f832). -->
 
 ## ❌ Won't Do
+- **T016** — Keystore in GitHub secrets — why not: owner chose "make the key publique" to keep sharing and updates simple · `(chat)`
 - **T015** — Debug-signed pre-release `v1.0.0-beta.1` — why not: owner chose "add the keystore secrets first and release v1.0.0 directly" · `(chat)`
 - **T023** — Use `others/liste-specialites-fmpm-2024.pdf` in the app — why not: "NOT used by the app" · `(chat)`
 - **T024** — Third-party or alpha `androidx.pdf` PDF library, Room, network, analytics, ads, Firebase — why not: excluded by the brief (offline, few stable dependencies) · `(chat)`
