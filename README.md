@@ -5,7 +5,7 @@ Dépôt de référence des documents de stage de la **Faculté de Médecine et d
 - **2022** : *Guide de stage hospitalier de l'étudiant — Édition 2022*
 - **old** : *Guide de stage de l'étudiant en médecine* (ancienne version, avant la réforme)
 
-Ce dépôt sert aussi de base de données à une future application Android (APK) « Externat FMPM » (voir [Feuille de route](#feuille-de-route)).
+Ce dépôt contient aussi l'application Android **« Externat FMPM »** qui embarque ces documents (voir [Application Android](#application-android)).
 
 ## Organisation
 
@@ -26,8 +26,16 @@ Ce dépôt sert aussi de base de données à une future application Android (APK
 ├── others/                          ← autres guides FMPM (étudiant, résident-interne, thésard, spécialités)
 ├── data/
 │   ├── specialites.json             ← source de vérité : spécialité → version → année → pages
-│   └── index.json                   ← généré : liste de tous les PDF (pour l'app)
-└── scripts/build_objectives.py      ← régénère « objective par specialite/ »
+│   ├── index.json                   ← généré : liste de tous les PDF (pour l'app)
+│   ├── objectifs.json               ← généré : texte de chaque objectif (checklist, recherche)
+│   ├── objectifs_report.md          ← généré : comptes par entrée et points à vérifier
+│   └── guides.json                  ← les 6 guides complets embarqués dans l'app
+├── scripts/
+│   ├── build_objectives.py          ← régénère « objective par specialite/ »
+│   ├── build_app_data.py            ← régénère data/objectifs.json depuis les docx
+│   └── check_data.py                ← contrôle de cohérence (lancé par la CI)
+├── android/                         ← application Android (voir android/README.md)
+└── .github/workflows/android.yml    ← build de l'APK, artifact et releases
 ```
 
 ### Nommage des fichiers
@@ -113,17 +121,70 @@ python scripts/build_objectives.py --compress-old  # + régénère la copie comp
 
 Pour corriger un classement : modifier `data/specialites.json`, puis relancer le script (le dossier `objective par specialite/`, `data/index.json` et le tableau de ce README sont régénérés).
 
-## Feuille de route
+## Application Android
 
-Application Android « Externat FMPM » (dans ce même dépôt), modules prévus :
+**Externat FMPM** : les objectifs de stage et les guides de la FMPM sur téléphone et tablette, **100 % hors ligne**, **sans aucune permission**, sans publicité ni statistiques.
 
-1. **Objectifs de stage** (fonction principale)
-   - recherche par service, filtre par année et par version (2022 / old) à partir de `data/index.json` ;
-   - affichage des PDF, téléchargement pour usage hors-ligne ;
-   - partage du PDF via WhatsApp ou toute autre application (feuille de partage Android).
-2. **Guide de l'étudiant** — éditions 2015 et 2024.
-3. **Guide du résident et de l'interne** (2017).
-4. **Guide pratique du thésard** (2015).
+- **Objectifs de stage** : les 43 spécialités par catégorie, filtres année (1A … 6A) et version (2022 / ancien / les deux, mémorisés), recherche par nom **et dans le texte des objectifs**, sans tenir compte des accents (« gyneco » trouve « Gynécologie »), avec surlignage.
+- **Checklist** : chaque objectif se coche ; avancement « 12 / 20 » par entrée et par spécialité ; « Tout décocher » avec confirmation ; conservée après redémarrage et mise à jour.
+- **PDF** de chaque entrée dans la visionneuse intégrée (pincer pour zoomer, double tap, « 3 / 12 », aller à la page), **Partager** (WhatsApp ou autre), **Enregistrer** (emplacement au choix), **Favori** ★, source affichée (« Guide de stage 2022, p. 12 »).
+- **Guides** : guide de l'étudiant 2024 et 2015, guide du résident et de l'interne 2017, guide du thésard 2015, guide de stage 2022 et ancienne version.
+- **Favoris & récents** (20 derniers documents), thème clair / sombre / système, couleurs dynamiques (Android 12+), pages PDF sombres en option.
+- Tablette et paysage : rail de navigation et deux volets (liste + détail).
+
+_Captures d'écran : à ajouter._
+
+### Installer l'APK
+
+- **Dernière version publiée** : page [Releases](../../releases) → `externat-fmpm-X.Y.Z.apk` (ou le `.zip` avec la notice d'installation en français).
+- **Build de chaque commit** : onglet **Actions** → workflow **Android** → run → artifact `externat-fmpm-apk` (GitHub le fournit en `.zip`).
+- Sur le téléphone : ouvrir l'APK, autoriser l'installation depuis cette source (« sources inconnues »), « Installer ». Notice complète : [`android/distribution/README-installation.txt`](android/distribution/README-installation.txt).
+
+### Construire en local
+
+JDK 17+ et le SDK Android (API 37) :
+
+```bash
+cd android
+export LC_ALL=C.UTF-8          # Linux : noms de fichiers accentués
+./gradlew :app:assembleDebug   # -> android/app/build/outputs/apk/debug/app-debug.apk
+./gradlew :app:testDebugUnitTest :app:lintDebug
+```
+
+Détails (architecture, copie des PDF dans l'APK, tests) : [`android/README.md`](android/README.md).
+
+### Signature : clé fixe obligatoire pour les mises à jour
+
+Android n'installe une nouvelle version par-dessus l'ancienne **que si les deux sont signées avec la même clé**. Sans clé fixe, la CI signe avec une clé de debug **différente à chaque run** : chaque mise à jour imposerait de désinstaller l'app, ce qui **efface la checklist**. À faire une fois :
+
+1. Créer la clé (garder le fichier et les mots de passe en lieu sûr, hors du dépôt) :
+
+   ```bash
+   keytool -genkeypair -v -storetype PKCS12 -keystore externat-fmpm.jks -alias externat \
+     -keyalg RSA -keysize 4096 -validity 36500 -dname "CN=Externat FMPM"
+   ```
+
+   (Avec PKCS12, le mot de passe de la clé est le même que celui du keystore.)
+
+2. Encoder le fichier en base64 :
+   - **Linux / macOS** : `base64 -w0 externat-fmpm.jks > keystore.b64` (macOS : `base64 -i externat-fmpm.jks -o keystore.b64`)
+   - **Windows (PowerShell)** : `[Convert]::ToBase64String([IO.File]::ReadAllBytes("externat-fmpm.jks")) | Set-Content -NoNewline keystore.b64`
+
+3. GitHub → **Settings → Secrets and variables → Actions → New repository secret** : `KEYSTORE_BASE64` (contenu de `keystore.b64`), `KEYSTORE_PASSWORD`, `KEY_ALIAS` (`externat`), `KEY_PASSWORD` (le même mot de passe). Supprimer ensuite `keystore.b64`.
+
+### Publier une version
+
+Pousser un tag `v*` sur `main` (ex. `git tag v1.0.0 && git push origin v1.0.0`) : la CI crée la release GitHub avec `externat-fmpm-1.0.0.apk` et `externat-fmpm-1.0.0.zip`. Le `versionCode` est le numéro du run (toujours croissant), le `versionName` vient du tag.
+
+### Mettre à jour le contenu
+
+Aucun code à modifier :
+
+1. Corriger `data/specialites.json` (ou les transcriptions dans `drafts/`) ;
+2. `python scripts/build_objectives.py` puis `python scripts/build_app_data.py` (`pip install pymupdf python-docx`) ;
+3. relire `data/objectifs_report.md`, committer, pousser : la CI construit le nouvel APK.
+
+> Les `id` des objectifs (`cardiologie:2022:3A:01`) suivent l'ordre des objectifs dans chaque entrée : insérer ou retirer un objectif décale les suivants, et les cases déjà cochées après lui.
 
 ## Sources
 
@@ -132,5 +193,5 @@ Application Android « Externat FMPM » (dans ce même dépôt), modules prévus
 | `sources/guide de stage 2022.pdf` | Guide de stage hospitalier, édition 2022 (partie objectifs, p. 46-78 imprimées) |
 | `sources/guide de stage old - compresse.pdf` | Ancien guide de stage (116 p.), copie compressée |
 | `sources/liste objectives - guide stage old.pdf` | Liste des objectifs de l'ancien guide (version texte) |
-| `drafts/*.docx` | Transcriptions OCR manuelles des deux guides (brouillons, non utilisés pour les extraits) |
+| `drafts/*.docx` | Transcriptions OCR corrigées à la main des deux guides : source du texte des objectifs (`data/objectifs.json`), pas des extraits PDF |
 | `others/` | Guides de l'étudiant 2015 et 2024, guide du résident-interne 2017, guide du thésard 2015, liste des spécialités 2024 |
