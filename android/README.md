@@ -102,6 +102,25 @@ Le SDK Android est trouvé via `ANDROID_HOME` ou `local.properties` (`sdk.dir=�
 Variables lues par le build : `VERSION_CODE`, `VERSION_NAME`, `KEYSTORE_FILE`, `KEYSTORE_PASSWORD`,
 `KEY_ALIAS`, `KEY_PASSWORD`.
 
+## Signature : clé fixe obligatoire pour les mises à jour
+
+Android n'installe une nouvelle version par-dessus l'ancienne **que si les deux sont signées avec la même clé**. Sans clé fixe, la CI signe avec une clé de debug **différente à chaque run** : chaque mise à jour imposerait de désinstaller l'app, ce qui **efface la checklist**. À faire une fois :
+
+1. Créer la clé (garder le fichier et les mots de passe en lieu sûr, hors du dépôt) :
+
+   ```bash
+   keytool -genkeypair -v -storetype PKCS12 -keystore externat-fmpm.jks -alias externat \
+     -keyalg RSA -keysize 4096 -validity 36500 -dname "CN=Externat FMPM"
+   ```
+
+   (Avec PKCS12, le mot de passe de la clé est le même que celui du keystore.)
+
+2. Encoder le fichier en base64 :
+   - **Linux / macOS** : `base64 -w0 externat-fmpm.jks > keystore.b64` (macOS : `base64 -i externat-fmpm.jks -o keystore.b64`)
+   - **Windows (PowerShell)** : `[Convert]::ToBase64String([IO.File]::ReadAllBytes("externat-fmpm.jks")) | Set-Content -NoNewline keystore.b64`
+
+3. GitHub → **Settings → Secrets and variables → Actions → New repository secret** : `KEYSTORE_BASE64` (contenu de `keystore.b64`), `KEYSTORE_PASSWORD`, `KEY_ALIAS` (`externat`), `KEY_PASSWORD` (le même mot de passe). Supprimer ensuite `keystore.b64`.
+
 ## Tests
 
 - `CatalogTest` : lecture des vrais `index.json` / `objectifs.json`, filtres d'année (`3A-6A`,
