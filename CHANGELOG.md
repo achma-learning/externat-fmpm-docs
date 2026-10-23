@@ -13,7 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ---
 
 ## [Unreleased]
-_Changes since the last version. No version tagged yet: the first one will be the app's first release._
+_Changes since the last version._
+
+---
+
+## [v1.0.0] — 2026-10-23
+_First release of the Android app, signed with the fixed release key._
 
 ### Added
 - Android app **Externat FMPM** in `android/` (Kotlin, Compose, Material 3, minSdk 24 / target 37): fully offline, no permissions. `(9e7f832, f460c50)` ✅ verified (f460c50): lint clean, 15/15 tests, R8 release build
@@ -26,7 +31,7 @@ _Changes since the last version. No version tagged yet: the first one will be th
 - `data/objectifs.json` — 1,331 objectives extracted from `drafts/*.docx` by `scripts/build_app_data.py`, with `data/objectifs_report.md` for review. `(a38a66a)` ✅ verified (a38a66a): deterministic rerun, `check_data.py` OK
 - `scripts/check_data.py` — CI check: every `fichier` exists, objectives match `index.json`, unique IDs. `(a38a66a)`
 - GitHub Actions `android.yml`: data check, lint, tests, R8 APK artifact `externat-fmpm-apk`; `v*` tag → Release with `.apk` + `.zip`. `(b30c4e8)`
-- Hyphenated tags (`v1.0.0-beta.1`) are published as GitHub pre-releases. `(0006055)`
+- Hyphenated tags (`v1.1.0-beta.1`) are published as GitHub pre-releases; release notes start with the tag's CHANGELOG section. `(0006055, pending)`
 
 ### Changed
 - Architectural: Gradle task `copy<Variant>AppContent` copies repo PDFs/JSON into generated assets with ASCII slugs, so no PDF is duplicated under `android/`. `(9e7f832)`
@@ -38,9 +43,10 @@ _Changes since the last version. No version tagged yet: the first one will be th
 
 ### Security
 - Release signing reads the keystore from CI secrets only; `*.jks`, `*.keystore`, `*.apk`, `local.properties` are git-ignored. `(9e7f832, b30c4e8)`
+- A stable `v*` tag without the `KEYSTORE_*` secrets now fails CI (`Tag stable … sans secrets de signature`) instead of shipping a debug-signed APK that could never be updated. `(pending)`
 
 ### Broken
-- Without the `KEYSTORE_*` secrets, CI signs with a throwaway debug key: an APK from one run can't be updated by another (uninstall needed, checklist lost). Workaround: add the secrets (README). `(b30c4e8)`
+- Builds without the `KEYSTORE_*` secrets (branches, pre-release tags) are signed with a throwaway debug key: they can't be updated by another build (uninstall needed, checklist lost). `(b30c4e8)`
 - Not yet run on a real device or emulator: PDF rendering, zoom, WhatsApp share and the SAF save flow are only build/lint-checked. `(f460c50)`
 
 ---
@@ -60,8 +66,8 @@ _Changes since the last version. No version tagged yet: the first one will be th
 
 ---
 
-_No version tags yet: link references are added once the first `v*` tag exists._
-[Unreleased]: https://github.com/achma-learning/externat-fmpm-docs/commits/main
+[Unreleased]: https://github.com/achma-learning/externat-fmpm-docs/compare/v1.0.0...HEAD
+[v1.0.0]: https://github.com/achma-learning/externat-fmpm-docs/releases/tag/v1.0.0
 
 ---
 

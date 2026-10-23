@@ -70,6 +70,10 @@ jobs:
               echo "KEY_PASSWORD=$KEY_PASSWORD"
             } >> "$GITHUB_ENV"
             echo "signed=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF" == refs/tags/v* && "$GITHUB_REF_NAME" != *-* ]]; then
+            # Une version stable signée avec une clé jetable ne pourrait jamais être mise à jour.
+            echo "::error::Tag stable $GITHUB_REF_NAME sans secrets de signature (KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD) : release annulée."
+            exit 1
           else
             echo "::warning::Secrets de signature absents : APK signé avec une clé de debug temporaire (les mises à jour ne s'installeront pas par-dessus)."
             echo "signed=false" >> "$GITHUB_OUTPUT"
@@ -113,7 +117,14 @@ jobs:
           else
             signing="⚠️ Signé avec une clé de debug temporaire : installation neuve uniquement (pas de mise à jour par-dessus)."
           fi
+          # Section « ## [vX.Y.Z] » du CHANGELOG, si elle existe, en tête des notes.
+          changes=$(awk -v h="## [v$VERSION]" 'index($0, h) == 1 { f = 1; next } f && /^## / { exit } f && $0 != "---"' ../CHANGELOG.md)
           {
+            if [ -n "$changes" ]; then
+              echo "## Nouveautés"
+              echo "$changes" | sed 's/^### /#### /'
+              echo
+            fi
             echo "## Téléchargement"
             echo "- \`$APK\` : application Android (7.0 et plus), hors ligne, aucune permission. SHA-256 : \`$sha_apk\`"
             echo "- \`$zip_name\` : l'APK + \`README-installation.txt\` (installation, sources inconnues, mises à jour). SHA-256 : \`$sha_zip\`"
