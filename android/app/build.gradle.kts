@@ -13,8 +13,10 @@ plugins {
 val ciVersionCode = providers.environmentVariable("VERSION_CODE").orNull?.toIntOrNull() ?: 1
 val ciVersionName = providers.environmentVariable("VERSION_NAME").orNull ?: "1.0.$ciVersionCode"
 
-// Signature : keystore fixe fourni par la CI (secrets), sinon clé de debug.
-val keystoreFile = providers.environmentVariable("KEYSTORE_FILE").orNull?.takeIf { File(it).isFile }
+// Signature : clé de release PUBLIQUE, versionnée exprès dans android/signing/ (projet personnel,
+// partage libre, pas de secret). Toutes les versions sont signées avec elle : chaque mise à jour
+// s'installe par-dessus la précédente et garde la checklist. Ne jamais la remplacer.
+val releaseKeystore = rootProject.file("signing/externat-fmpm-release.jks")
 
 android {
     namespace = "io.github.achmalearning.externat"
@@ -29,13 +31,11 @@ android {
     }
 
     signingConfigs {
-        if (keystoreFile != null) {
-            create("release") {
-                storeFile = File(keystoreFile)
-                storePassword = providers.environmentVariable("KEYSTORE_PASSWORD").orNull
-                keyAlias = providers.environmentVariable("KEY_ALIAS").orNull
-                keyPassword = providers.environmentVariable("KEY_PASSWORD").orNull
-            }
+        create("release") {
+            storeFile = releaseKeystore
+            storePassword = "externat-fmpm"
+            keyAlias = "externat"
+            keyPassword = "externat-fmpm"
         }
     }
 
@@ -44,7 +44,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

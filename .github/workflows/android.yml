@@ -53,28 +53,6 @@ jobs:
           echo "VERSION_NAME=$name" >> "$GITHUB_ENV"
           echo "VERSION_CODE=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
 
-      - name: Clé de signature
-        id: signing
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: |
-          if [ -n "$KEYSTORE_BASE64" ] && [ -n "$KEYSTORE_PASSWORD" ] && [ -n "$KEY_ALIAS" ] && [ -n "$KEY_PASSWORD" ]; then
-            echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
-            {
-              echo "KEYSTORE_FILE=$RUNNER_TEMP/release.jks"
-              echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
-              echo "KEY_ALIAS=$KEY_ALIAS"
-              echo "KEY_PASSWORD=$KEY_PASSWORD"
-            } >> "$GITHUB_ENV"
-            echo "signed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "::warning::Secrets de signature absents : APK signé avec une clé de debug temporaire (les mises à jour ne s'installeront pas par-dessus)."
-            echo "signed=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Lint, tests et APK release
         working-directory: android
         run: ./gradlew --no-daemon :app:lintDebug :app:testDebugUnitTest :app:assembleRelease
@@ -100,7 +78,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.version.outputs.name }}
           APK: ${{ steps.apk.outputs.file }}
-          SIGNED: ${{ steps.signing.outputs.signed }}
         run: |
           cd dist
           zip_name="externat-fmpm-${VERSION}.zip"
@@ -108,17 +85,19 @@ jobs:
           zip -q "$zip_name" "$APK" README-installation.txt
           sha_apk=$(cut -d' ' -f1 "$APK.sha256")
           sha_zip=$(sha256sum "$zip_name" | cut -d' ' -f1)
-          if [ "$SIGNED" = "true" ]; then
-            signing="Signé avec la clé définitive : s'installe par-dessus les versions précédentes."
-          else
-            signing="⚠️ Signé avec une clé de debug temporaire : installation neuve uniquement (pas de mise à jour par-dessus)."
-          fi
+          # Section « ## [vX.Y.Z] » du CHANGELOG, si elle existe, en tête des notes.
+          changes=$(awk -v h="## [v$VERSION]" 'index($0, h) == 1 { f = 1; next } f && /^## / { exit } f && $0 != "---"' ../CHANGELOG.md)
           {
+            if [ -n "$changes" ]; then
+              echo "## Nouveautés"
+              echo "$changes" | sed 's/^### /#### /'
+              echo
+            fi
             echo "## Téléchargement"
             echo "- \`$APK\` : application Android (7.0 et plus), hors ligne, aucune permission. SHA-256 : \`$sha_apk\`"
             echo "- \`$zip_name\` : l'APK + \`README-installation.txt\` (installation, sources inconnues, mises à jour). SHA-256 : \`$sha_zip\`"
             echo
-            echo "$signing"
+            echo "Signé avec la clé de release du dépôt (android/signing/) : chaque version s'installe par-dessus la précédente."
             echo
             echo "## Installer ou mettre à jour"
             echo "Ouvrez l'APK sur le téléphone, autorisez l'installation depuis cette source, puis « Installer »."

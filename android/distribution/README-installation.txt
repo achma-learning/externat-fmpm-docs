@@ -22,10 +22,12 @@ Android 7.0 ou plus récent, téléphone ou tablette. Aucune permission demandé
 ----------------
  - Installez simplement le nouvel APK par-dessus l'ancien (mêmes étapes).
    La checklist, les favoris et les réglages sont conservés.
+ - Toutes les versions publiées sur la page Releases sont signées avec la même
+   clé : elles s'installent toujours les unes par-dessus les autres.
  - Si Android refuse (« Application non installée », « signature différente ») :
-   l'ancien APK a été signé avec une autre clé. Il faut alors désinstaller
-   l'ancienne version, ce qui EFFACE la checklist. Les versions publiées avec
-   la clé définitive s'installent toujours les unes sur les autres.
+   l'APK installé venait d'ailleurs (par ex. un build de test de l'onglet
+   Actions d'avant la v1.0.0). Il faut alors le désinstaller une fois, ce qui
+   EFFACE la checklist, puis installer la version de la page Releases.
 
 3. REVENIR À UNE VERSION PRÉCÉDENTE
 -----------------------------------
