@@ -1,0 +1,8 @@
+[
+  {"id": "guide-etudiant-2024", "titre": "Guide de l'étudiant 2024", "description": "Guide de l'étudiant de la FMPM, édition 2024", "fichier": "others/Guide-de-létudiant-FMPM-2024.pdf"},
+  {"id": "guide-etudiant-2015", "titre": "Guide de l'étudiant 2015", "description": "Guide de l'étudiant de la FMPM, édition 2015", "fichier": "others/guide de l'etudiant 2015.pdf"},
+  {"id": "guide-resident-interne-2017", "titre": "Guide du résident et de l'interne 2017", "description": "Guide du résident et de l'interne de la FMPM (2017)", "fichier": "others/fmpm - Guide du Résident-interne (2017).pdf"},
+  {"id": "guide-thesard-2015", "titre": "Guide pratique du thésard 2015", "description": "Guide pratique du thésard de la FMPM (2015)", "fichier": "others/Guide pratique du thésard 2015 fmpm.pdf"},
+  {"id": "guide-stage-2022", "titre": "Guide de stage hospitalier 2022", "description": "Guide de stage hospitalier de l'étudiant, édition 2022 (partie objectifs)", "fichier": "sources/guide de stage 2022.pdf"},
+  {"id": "guide-stage-old", "titre": "Guide de stage (ancienne version)", "description": "Guide de stage de l'étudiant en médecine, ancienne version (116 pages)", "fichier": "sources/guide de stage old - compresse.pdf"}
+]

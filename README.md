@@ -1,47 +1,63 @@
-# Externat FMPM — Objectifs de stage
+# Externat FMPM — objectifs de stage
 
-Dépôt de référence des documents de stage de la **Faculté de Médecine et de Pharmacie de Marrakech (FMPM)**, avec les **objectifs de stage classés par spécialité** pour les deux versions du guide de stage :
+> Les objectifs de stage hospitalier de la FMPM (Marrakech), découpés par spécialité et par année, et une appli Android pour les cocher hors ligne.
 
-- **2022** : *Guide de stage hospitalier de l'étudiant — Édition 2022*
-- **old** : *Guide de stage de l'étudiant en médecine* (ancienne version, avant la réforme)
+**Démarrage rapide :** 1. télécharger `externat-fmpm-X.Y.Z.apk` dans [Releases](../../releases) · 2. l'ouvrir sur le téléphone et autoriser « sources inconnues » · 3. choisir une spécialité, cocher ses objectifs.
 
-Ce dépôt sert aussi de base de données à une future application Android (APK) « Externat FMPM » (voir [Feuille de route](#feuille-de-route)).
+_TODO : ajouter une capture d'écran (liste des spécialités + checklist)._
 
-## Organisation
+## Ce que c'est
+
+Les objectifs de stage sont noyés dans deux longs guides PDF : le **guide de stage hospitalier 2022** et l'**ancien guide**. Ce dépôt les découpe en un PDF par service, par année et par version (78 fichiers, 43 spécialités), en extrait le texte, et l'application Android **Externat FMPM** les rend consultables partout : checklist par objectif, recherche dans le texte, PDF, partage WhatsApp. Elle fonctionne **sans internet et sans aucune permission**. Tout le contenu est dans l'APK, rien ne sort du téléphone.
+
+Elle embarque aussi les guides complets : guide de l'étudiant 2024 et 2015, guide du résident et de l'interne 2017, guide pratique du thésard 2015, guide de stage 2022 et ancienne version.
+
+## Installer et lancer
+
+**Sur le téléphone (Android 7.0 ou plus) :** prendre l'APK sur la page [Releases](../../releases) (ou l'artifact `externat-fmpm-apk` d'un run de l'onglet **Actions**), l'ouvrir, autoriser l'installation depuis cette source, « Installer ». Notice détaillée : [`android/distribution/README-installation.txt`](android/distribution/README-installation.txt).
+
+**Construire soi-même** (JDK 17+, SDK Android API 37, Python 3) :
+
+```bash
+pip install pymupdf python-docx
+python scripts/build_objectives.py    # PDF par spécialité + data/index.json + tableau ci-dessous
+python scripts/build_app_data.py      # texte des objectifs -> data/objectifs.json
+python scripts/check_data.py          # contrôle de cohérence
+
+cd android
+export LC_ALL=C.UTF-8                 # Linux : noms de fichiers accentués
+./gradlew :app:assembleDebug          # -> android/app/build/outputs/apk/debug/app-debug.apk
+./gradlew :app:testDebugUnitTest :app:lintDebug
+```
+
+Une version publiée (tag `v*`) doit être signée avec une **clé fixe**, sinon les mises à jour ne s'installent pas par-dessus et la checklist est perdue. Mise en place (keytool, base64, secrets GitHub) : [`android/README.md`](android/README.md#signature--clé-fixe-obligatoire-pour-les-mises-à-jour). Publier une version : [`RELEASE.md`](RELEASE.md).
+
+## Utilisation
+
+1. Onglet **Objectifs** : filtrer par année (`5A`) et par version (`2022`, `Ancien`, `Les deux`). Le choix est mémorisé.
+2. Toucher **Gynécologie-obstétrique**, puis l'onglet `6A · 2022`.
+3. Cocher « Pratiquer un accouchement normal » : la barre passe à `1 / 12`.
+4. Basculer sur **PDF** pour voir la page du guide : pincer pour zoomer, toucher « 3 / 12 » pour aller à une page. ★ pour les favoris, **Partager** pour l'envoyer sur WhatsApp, **Enregistrer** pour en garder une copie.
+
+La recherche ignore les accents et cherche aussi dans le texte : « hemorragie post partum » trouve les objectifs de gynéco 6A et de l'ancien guide.
+
+Sur tablette ou en paysage, la liste et le détail s'affichent côte à côte.
+
+## Organisation du dépôt
 
 ```
-.
-├── objective par specialite/        ← un dossier par service, un PDF par année et par version
-│   ├── cardiologie/
-│   │   ├── 3A - objective de stage 2022.pdf
-│   │   ├── 3A - objective de stage old.pdf
-│   │   └── 6A - objective de stage old.pdf
-│   └── …
-├── sources/                         ← guides complets (sources des extraits)
-│   ├── guide de stage 2022.pdf
-│   ├── guide de stage old - compresse.pdf
-│   ├── liste objectives - guide stage old.pdf
-│   └── original/                    ← guide old original (68 Mo, non versionné)
-├── drafts/                          ← brouillons OCR (.docx) faits à la main
-├── others/                          ← autres guides FMPM (étudiant, résident-interne, thésard, spécialités)
-├── data/
-│   ├── specialites.json             ← source de vérité : spécialité → version → année → pages
-│   └── index.json                   ← généré : liste de tous les PDF (pour l'app)
-└── scripts/build_objectives.py      ← régénère « objective par specialite/ »
+objective par specialite/<dossier>/<année> - objective de stage <2022|old>.pdf   ← 78 extraits
+sources/          guides de stage complets (2022, ancien compressé, liste texte des objectifs)
+others/           guides de l'étudiant 2015/2024, résident-interne 2017, thésard 2015
+drafts/           transcriptions corrigées à la main (.docx) : source du texte des objectifs
+data/             specialites.json (source de vérité), index.json, objectifs.json, guides.json
+scripts/          build_objectives.py, build_app_data.py, check_data.py
+android/          l'application (voir android/README.md)
 ```
 
-### Nommage des fichiers
+Nom des fichiers : `1A` … `6A` = année du stage ; `4A-5A` = le guide place le stage en 4ème et 5ème année ; `3A-6A` = de la 3ème à la 6ème année (centre de santé) ; `XA` = année non précisée par le guide. Les dossiers sont en minuscules, sans accents ni espaces.
 
-`<année> - objective de stage <version>.pdf`
-
-| Préfixe | Signification |
-|---|---|
-| `1A` … `6A` | objectifs du stage en 1ère … 6ème année |
-| `4A-5A` | le guide place ce stage en 4ème et 5ème année |
-| `3A-6A` | stage effectué de la 3ème à la 6ème année (centre de santé) |
-| `XA` | année non précisée par le guide |
-
-Les dossiers sont en minuscules, sans accents ni espaces, pour rester compatibles avec git et l'application.
+**Mettre à jour le contenu** (aucun code à modifier) : corriger `data/specialites.json` ou les `drafts/*.docx`, relancer les deux scripts, relire `data/objectifs_report.md`, pousser. La CI reconstruit l'APK. Attention : les `id` des objectifs suivent leur ordre dans chaque entrée, donc en insérer un décale les cases déjà cochées après lui.
 
 ## Spécialités
 
@@ -101,36 +117,24 @@ Numéros de page = pages du **PDF source** (et non les numéros imprimés).
 - **Guide 2022** : centre de santé et laboratoires n'ont pas d'en-tête d'année. Le centre de santé est classé 3A-6A ; les laboratoires 5A (comme dans l'ancien guide).
 - **Pages partagées** : quand une page contient deux services ou deux années (ex. gynéco 5A/6A p80, anapath + immunologie p94), la page entière est incluse dans chaque fichier concerné (voir `note` dans `data/specialites.json`).
 - **Appareil locomoteur (2022)** : traumatologie, rhumatologie et réadaptation forment un seul tableau dans le guide 2022 → dossier `appareil-locomoteur`. Les services équivalents de l'ancien guide restent dans `traumatologie-orthopedie`, `rhumatologie` et `medecine-physique-readaptation`.
-- **Guide old compressé** : l'original (68 Mo, texte vectorisé) dépasse la limite de 25 Mo de GitHub. Une copie rastérisée en niveaux de gris à 200 dpi (~15 Mo) est versionnée et sert de source aux extraits ; l'original reste en local dans `sources/original/` (ignoré par git).
+- **Guide old compressé** : l'original (68 Mo, texte vectorisé) dépasse la limite de 25 Mo de GitHub. Une copie rastérisée en niveaux de gris à 200 dpi (~15 Mo) est versionnée et sert de source aux extraits ; l'original reste en local dans `sources/original/` (ignoré par git, `python scripts/build_objectives.py --compress-old` pour la régénérer).
 
-## Régénérer les PDF
+## Nouveautés
 
-```bash
-pip install pymupdf
-python scripts/build_objectives.py                 # extrait tous les PDF par spécialité
-python scripts/build_objectives.py --compress-old  # + régénère la copie compressée du guide old
-```
+Première version de l'application Android : checklist, recherche plein texte, visionneuse PDF, guides, favoris, APK construit par GitHub Actions. [Historique complet →](CHANGELOG.md)
 
-Pour corriger un classement : modifier `data/specialites.json`, puis relancer le script (le dossier `objective par specialite/`, `data/index.json` et le tableau de ce README sont régénérés).
+## Pourquoi
 
-## Feuille de route
+En stage, je voulais savoir en deux secondes ce que je dois valider dans le service où je suis, sans fouiller un PDF de 116 pages ni dépendre du réseau de l'hôpital. Et pouvoir l'envoyer au groupe WhatsApp.
 
-Application Android « Externat FMPM » (dans ce même dépôt), modules prévus :
+## Licence
 
-1. **Objectifs de stage** (fonction principale)
-   - recherche par service, filtre par année et par version (2022 / old) à partir de `data/index.json` ;
-   - affichage des PDF, téléchargement pour usage hors-ligne ;
-   - partage du PDF via WhatsApp ou toute autre application (feuille de partage Android).
-2. **Guide de l'étudiant** — éditions 2015 et 2024.
-3. **Guide du résident et de l'interne** (2017).
-4. **Guide pratique du thésard** (2015).
+Pas encore de licence. Les guides et objectifs sont des documents de la Faculté de Médecine et de Pharmacie de Marrakech. Application personnelle, non officielle.
 
-## Sources
+## Voir aussi
 
-| Fichier | Description |
-|---|---|
-| `sources/guide de stage 2022.pdf` | Guide de stage hospitalier, édition 2022 (partie objectifs, p. 46-78 imprimées) |
-| `sources/guide de stage old - compresse.pdf` | Ancien guide de stage (116 p.), copie compressée |
-| `sources/liste objectives - guide stage old.pdf` | Liste des objectifs de l'ancien guide (version texte) |
-| `drafts/*.docx` | Transcriptions OCR manuelles des deux guides (brouillons, non utilisés pour les extraits) |
-| `others/` | Guides de l'étudiant 2015 et 2024, guide du résident-interne 2017, guide du thésard 2015, liste des spécialités 2024 |
+- [`CONTEXT.md`](CONTEXT.md) — pour les assistants IA qui reprennent le projet
+- [`CHANGELOG.md`](CHANGELOG.md) — ce qui a changé et quand
+- [`TRAJECTORY.md`](TRAJECTORY.md) — objectif final et liste des choses à faire
+- [`RELEASE.md`](RELEASE.md) — ce qu'on peut télécharger, et comment publier une version
+- [`android/README.md`](android/README.md) — architecture de l'app, signature, tests

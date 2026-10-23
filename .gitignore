@@ -8,3 +8,18 @@ Thumbs.db
 desktop.ini
 .DS_Store
 __pycache__/
+
+# Android : sorties de build, clés de signature, fichiers locaux (jamais versionnés)
+android/.gradle/
+android/.kotlin/
+android/build/
+android/app/build/
+android/local.properties
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+*.idsig
+.idea/
+*.iml
