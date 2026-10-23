@@ -127,5 +127,8 @@ jobs:
             echo "## Revenir en arrière"
             echo "Android refuse un versionCode plus ancien : désinstaller (efface la checklist), puis installer l'APK d'une release précédente."
           } > notes.md
-          gh release create "$GITHUB_REF_NAME" "$APK" "$zip_name" \
+          # v1.0.0-beta.1, v1.1.0-rc.1… (tiret = SemVer pré-version) -> pre-release GitHub.
+          prerelease=()
+          [[ "$VERSION" == *-* ]] && prerelease=(--prerelease)
+          gh release create "$GITHUB_REF_NAME" "$APK" "$zip_name" "${prerelease[@]}" \
             --repo "$GITHUB_REPOSITORY" --title "Externat FMPM $VERSION" --notes-file notes.md
